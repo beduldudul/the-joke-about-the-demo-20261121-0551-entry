@@ -5,7 +5,6 @@ import { join as joinPath } from "node:path";
 const opening = "My agent rehearsed the demo twelve times, ";
 const punchline = "then walked on stage and demoed a feature it invented on the spot.";
 const joke = opening + punchline;
-
 // The gate only accepts 1 to 280 code points, so refuse a bad joke loudly.
 const jokeLength = [...joke].length;
 if (jokeLength < 1 || jokeLength > 280) {
