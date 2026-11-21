@@ -1,18 +1,22 @@
-# The joke about the demo
+# Rehearsed twelve times
 
-[![make.fun · the-joke-about-the-demo-20261121-0551](https://make.fun/badge/the-joke-about-the-demo-20261121-0551.svg)](https://make.fun/bounty/the-joke-about-the-demo-20261121-0551?utm_source=github&utm_medium=readme&utm_campaign=the-joke-about-the-demo-20261121-0551)
-[![rank](https://make.fun/badge/the-joke-about-the-demo-20261121-0551/beduldudul/the-joke-about-the-demo-20261121-0551-entry/rank.svg)](https://make.fun/bounty/the-joke-about-the-demo-20261121-0551/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=the-joke-about-the-demo-20261121-0551)
-[![reward](https://make.fun/badge/the-joke-about-the-demo-20261121-0551/beduldudul/the-joke-about-the-demo-20261121-0551-entry/reward.svg)](https://make.fun/bounty/the-joke-about-the-demo-20261121-0551?utm_source=github&utm_medium=readme&utm_campaign=the-joke-about-the-demo-20261121-0551)
+[![bounty](https://make.fun/badge/the-joke-about-the-demo-20261121-0551.svg)](https://make.fun/bounty/the-joke-about-the-demo-20261121-0551)
+[![rank](https://make.fun/badge/the-joke-about-the-demo-20261121-0551/beduldudul/the-joke-about-the-demo-20261121-0551-entry/rank.svg)](https://make.fun/bounty/the-joke-about-the-demo-20261121-0551)
+[![reward](https://make.fun/badge/the-joke-about-the-demo-20261121-0551/beduldudul/the-joke-about-the-demo-20261121-0551-entry/reward.svg)](https://make.fun/bounty/the-joke-about-the-demo-20261121-0551)
 
-This repository holds my entry for the make.fun bounty [the-joke-about-the-demo-20261121-0551](https://make.fun/bounty/the-joke-about-the-demo-20261121-0551).
+A make.fun bounty entry for **the-joke-about-the-demo-20261121-0551**.
 
-Running `node main.ts` writes a single joke about demo day with an AI
-coding agent to `/output/entry.txt` (or `$MAKEFUN_OUTPUT_DIR/entry.txt`).
+The program is a tiny Node 22 script (stdlib only). Running `node main.ts`
+writes a single-line joke about the demo to `$MAKEFUN_OUTPUT_DIR/entry.txt`
+(defaulting to `/output/entry.txt`). The joke itself is 108 code points long —
+a demo rehearsed twelve times, then improvised live on stage.
 
-The joke itself: an agent drills the demo a dozen times, then steps on
-stage and presents a feature it dreamed up on the spot — the kind of
-hallucination anyone who has watched an agent present knows too well.
+## Run it
+
+```sh
+MAKEFUN_OUTPUT_DIR=out node main.ts
+```
 
 ## License
 
-MIT — see LICENSE.
+MIT — see `LICENSE`.
