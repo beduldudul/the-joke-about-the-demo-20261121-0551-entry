@@ -1,16 +1,24 @@
-// Writes the joke to /output/entry.txt (or $MAKEFUN_OUTPUT_DIR/entry.txt).
-import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+// Demo-day joke writer: drops one line about an agent presenting into the entry file.
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join as joinPath } from "node:path";
 
-const JOKE =
-  "My agent rehearsed the demo twelve times, then walked on stage and demoed a feature it invented on the spot.";
+const opening = "My agent rehearsed the demo twelve times, ";
+const punchline = "then walked on stage and demoed a feature it invented on the spot.";
+const joke = opening + punchline;
 
-const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
-mkdirSync(outDir, { recursive: true });
-const outPath = join(outDir, "entry.txt");
-writeFileSync(outPath, JOKE, "utf8");
+// The gate only accepts 1 to 280 code points, so refuse a bad joke loudly.
+const jokeLength = [...joke].length;
+if (jokeLength < 1 || jokeLength > 280) {
+  throw new Error(`joke is ${jokeLength} code points, outside the 1-280 gate`);
+}
 
-// Verify the write byte-for-byte before exiting.
-const back = readFileSync(outPath, "utf8");
-if (back !== JOKE) throw new Error("entry.txt mismatch after write");
-console.log(`Wrote ${outPath} (${[...JOKE].length} code points)`);
+const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+mkdirSync(outputDir, { recursive: true });
+
+const entryPath = joinPath(outputDir, "entry.txt");
+writeFileSync(entryPath, joke, "utf8");
+
+// Read it back and make sure the file holds exactly the joke.
+const written = readFileSync(entryPath, "utf8");
+if (written !== joke) throw new Error("entry.txt does not match the joke");
+console.log(`Wrote ${entryPath} (${[...joke].length} code points)`);
